@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package email;
+
+service MailService {
+    rpc SendEmail(MailRequest) returns (google.protobuf.Empty) {}
+}
+
+message MailRequest {
+    string subject = 1;
+    string content = 2;
+    string to = 3;
+}

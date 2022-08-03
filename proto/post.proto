@@ -1,0 +1,66 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+import "google/protobuf/any.proto";
+package post;
+
+service PostService {
+    rpc Create(PostRequest) returns (DataCreateResponse) {}
+    rpc FindById(PostIdRequest) returns (DataResponse) {}
+    rpc FindAll(google.protobuf.Empty) returns (DataListResponse) {}
+    rpc Update(PostRequestUpdate) returns (DataResponse) {}
+    rpc Delete(PostIdRequest) returns (DataDeleteResponse) {}
+}
+
+message PostIdRequest {
+    int32 id = 1;
+}
+
+message PostRequest {
+    int32 id = 1;
+    string title = 2;
+    string content = 3;
+    int32 user_id = 4;
+}
+
+message PostRequestUpdate {
+    int32 id = 1;
+    PostRequest data = 2;
+}
+
+message IUSer {
+    int32 id = 1;
+    string full_name = 2;
+    string email = 3;
+    string user_type = 4;
+}
+
+message PostResponse {
+    int32 id = 1;
+    string title = 2;
+    string content = 3;
+    IUSer user_id = 4;
+}
+
+message DataResponse {
+    bool success = 1;
+    PostResponse data = 2;
+    string message = 3;
+}
+
+message DataCreateResponse {
+    bool success = 1;
+    PostRequest data = 2;
+    string message = 3;
+}
+
+message DataListResponse {
+    bool success = 1;
+    repeated PostResponse data = 2;
+    string message = 3;
+}
+
+message DataDeleteResponse {
+    bool success = 1;
+    string data = 2;
+    string message = 3;
+}

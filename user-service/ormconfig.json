@@ -1,0 +1,22 @@
+{
+  "port": null,
+  "synchronize": false,
+  "logging": true,
+  "logger": "advanced-console",
+  "entities": [
+    "src/**/*.entity.{ts,js}"
+  ],
+  "migrations": [
+    "src/db/migrations/**/*.{ts,js}"
+  ],
+  "cli": {
+    "entitiesDir": "src/modules/**/entities",
+    "migrationsDir": "src/db/migrations"
+  },
+  "seeds": [
+    "src/db/seeding/seeds/**/*.{ts,js}"
+  ],
+  "factories": [
+    "src/db/seeding/factories/**/*.{ts,js}"
+  ]
+}
